@@ -163,8 +163,11 @@ vim.o.scrolloff = 10
 
 -- Tab width
 vim.o.tabstop = 4
-vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
+vim.o.shiftwidth = 0
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.autoindent = true
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
