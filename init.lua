@@ -388,6 +388,7 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -428,7 +429,7 @@ require('lazy').setup({
               '--hidden',
               '-g',
               '!.git',
-            }
+            },
           },
         },
         extensions = {
@@ -441,6 +442,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'file_browser')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -454,6 +456,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      -- File Browser
+      vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', { desc = '[F]ile [B]rowser' })
+      vim.keymap.set('n', '<space>fbp', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { desc = '[F]ile [B]rowser at current [P]ath' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -712,7 +718,7 @@ require('lazy').setup({
         },
       }
 
-      local lspconfig = require('lspconfig')
+      local lspconfig = require 'lspconfig'
 
       -- Ensure the servers and tools above are installed
       --
@@ -748,15 +754,15 @@ require('lazy').setup({
         },
       }
 
-      lspconfig.sourcekit.setup({
+      lspconfig.sourcekit.setup {
         capabilities = {
           workspace = {
             didChangeWatchedFiles = {
               dyanamicRegistration = true,
-            }
-          }
-        }
-      })
+            },
+          },
+        },
+      }
     end,
   },
 
@@ -796,17 +802,17 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { "ruff", "isort", "black" },
+        python = { 'ruff', 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", "prettier", stop_after_first = true },
-        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-        typescript = { "prettierd", "prettier", stop_after_first = true },
-        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-        css = { "prettierd", "prettier", stop_after_first = true },
-        html = { "prettierd", "prettier", stop_after_first = true },
-        json = { "prettierd", "prettier", stop_after_first = true },
-        yaml = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        yaml = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -998,26 +1004,25 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
   { -- AI Autocomplete
-    "supermaven-inc/supermaven-nvim",
+    'supermaven-inc/supermaven-nvim',
     opts = {
       keymaps = {
-        accept_suggestion = "<Tab>",
-        accept_word = "<C-Enter>",
+        accept_suggestion = '<Tab>',
+        accept_word = '<C-Enter>',
       },
     },
   },
 
-
   {
     'akinsho/toggleterm.nvim',
-    version = "*",
+    version = '*',
     opts = {
-      open_mapping = "<leader>tt",
+      open_mapping = '<leader>tt',
       direction = 'horizontal',
       size = function(term)
-        if term.direction == "horizontal" then
+        if term.direction == 'horizontal' then
           return vim.o.lines * 0.4
-        elseif term.direction == "vertical" then
+        elseif term.direction == 'vertical' then
           return vim.o.columns * 0.4
         end
       end,
