@@ -1013,22 +1013,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {
-      open_mapping = '<leader>tt',
-      direction = 'horizontal',
-      size = function(term)
-        if term.direction == 'horizontal' then
-          return vim.o.lines * 0.4
-        elseif term.direction == 'vertical' then
-          return vim.o.columns * 0.4
-        end
-      end,
-    },
-  },
-
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
