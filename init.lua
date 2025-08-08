@@ -309,6 +309,7 @@ require('lazy').setup({
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    enabled = false,
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.o.timeoutlen
@@ -980,6 +981,7 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    enabled = true,
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -1010,22 +1012,6 @@ require('lazy').setup({
         accept_suggestion = '<Tab>',
         accept_word = '<C-Enter>',
       },
-    },
-  },
-
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {
-      open_mapping = '<leader>tt',
-      direction = 'horizontal',
-      size = function(term)
-        if term.direction == 'horizontal' then
-          return vim.o.lines * 0.4
-        elseif term.direction == 'vertical' then
-          return vim.o.columns * 0.4
-        end
-      end,
     },
   },
 
