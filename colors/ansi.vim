@@ -137,7 +137,7 @@ hi @string.escape ctermfg=6
 hi @string.special.url ctermfg=4 cterm=underline
 hi @string.special.symbol ctermfg=13
 hi @type.builtin ctermfg=3
-hi @property ctermfg=1
+hi @property ctermfg=7
 hi @function.builtin ctermfg=5
 hi @constructor ctermfg=11
 hi @keyword.coroutine ctermfg=1

@@ -170,8 +170,8 @@ vim.o.smartindent = true
 vim.o.autoindent = true
 
 -- terminal theme
--- vim.o.termguicolors = false
--- vim.cmd.colorscheme 'ansi'
+vim.o.termguicolors = false
+vim.cmd.colorscheme 'ansi'
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -928,7 +928,7 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    enabled = true,
+    enabled = false,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
@@ -941,6 +941,17 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
+
+  {
+    'stevedylandev/ansi-nvim',
+    lazy = false,
+    enabled = false,
+    priority = 1000,
+    config = function()
+      vim.cmd('colorscheme ansi')
+      vim.opt.termguicolors = false
     end,
   },
 
