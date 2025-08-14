@@ -169,6 +169,10 @@ vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.autoindent = true
 
+-- terminal theme
+vim.o.termguicolors = false
+vim.cmd.colorscheme 'ansi'
+
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
@@ -924,6 +928,7 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    enabled = false,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
@@ -1012,6 +1017,21 @@ require('lazy').setup({
         accept_suggestion = '<Tab>',
         accept_word = '<C-Enter>',
       },
+    },
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = {
+      open_mapping = '<leader>r',
+      direction = 'vertical',
+      size = function(term)
+        if term.direction == 'horizontal' then
+          return vim.o.lines * 0.4
+        elseif term.direction == 'vertical' then
+          return vim.o.columns * 0.4
+        end
+      end,
     },
   },
 
