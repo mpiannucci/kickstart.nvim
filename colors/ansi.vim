@@ -132,14 +132,14 @@ hi @variable.builtin ctermfg=1
 hi @variable.parameter ctermfg=7
 hi @variable.member ctermfg=7
 hi @constant.builtin ctermfg=5
-hi @string.regexp ctermfg=1
-hi @string.escape ctermfg=6
+hi @string.regexp ctermfg=2
+hi @string.escape ctermfg=5
 hi @string.special.url ctermfg=4 cterm=underline
 hi @string.special.symbol ctermfg=13
 hi @type.builtin ctermfg=3
 hi @property ctermfg=7
 hi @function.builtin ctermfg=5
-hi @constructor ctermfg=11
+hi @constructor ctermfg=9
 hi @keyword.coroutine ctermfg=1
 hi @keyword.function ctermfg=5
 hi @keyword.return ctermfg=5
@@ -160,7 +160,7 @@ hi @markup.link.url ctermfg=5 cterm=underline
 hi @markup.raw ctermfg=14
 hi @markup.list.checked ctermfg=2
 hi @markup.list.unchecked ctermfg=7
-hi @tag ctermfg=5
+hi @tag ctermfg=9
 hi @tag.builtin ctermfg=6
 hi @tag.attribute ctermfg=4
 hi @tag.delimiter ctermfg=15
