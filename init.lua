@@ -1035,7 +1035,7 @@ require('lazy').setup({
     version = '*',
     enabled = true,
     opts = {
-      open_mapping = '<D-r>',
+      open_mapping = '<D-t>',
       direction = 'vertical',
       size = function(term)
         if term.direction == 'horizontal' then
