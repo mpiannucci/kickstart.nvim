@@ -953,7 +953,7 @@ require('lazy').setup({
     enabled = false,
     priority = 1000,
     config = function()
-      vim.cmd('colorscheme ansi')
+      vim.cmd 'colorscheme ansi'
       vim.opt.termguicolors = false
     end,
   },
@@ -1047,6 +1047,14 @@ require('lazy').setup({
           return vim.o.columns * 0.4
         end
       end,
+    },
+  },
+
+  {
+    "mpiannucci/copy-context",
+    -- optional configuration
+    opts = {
+      -- disable_default_keymap = true,
     },
   },
 
