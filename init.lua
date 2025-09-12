@@ -1051,10 +1051,17 @@ require('lazy').setup({
   },
 
   {
-    "mpiannucci/copy-context",
+    'mpiannucci/copy-context',
     -- optional configuration
     opts = {
       -- disable_default_keymap = true,
+    },
+  },
+
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      -- add any options here
     },
   },
 
