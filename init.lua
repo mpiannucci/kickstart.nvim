@@ -20,7 +20,7 @@
 =====================================================================
 =====================================================================
 
-What is Kickstart?
+What is Kickstart? What is it not?
 
   Kickstart.nvim is *not* a distribution.
 
@@ -1028,7 +1028,7 @@ require('lazy').setup({
     'supermaven-inc/supermaven-nvim',
     opts = {
       keymaps = {
-        accept_suggestion = '<Tab>',
+        accept_suggestion = '<A-Tab>',
         accept_word = '<C-Enter>',
       },
     },
