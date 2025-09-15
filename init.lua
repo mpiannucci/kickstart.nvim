@@ -1028,8 +1028,8 @@ require('lazy').setup({
     'supermaven-inc/supermaven-nvim',
     opts = {
       keymaps = {
-        accept_suggestion = '<A-Tab>',
-        accept_word = '<C-Enter>',
+        accept_suggestion = '<S-Tab>',
+        accept_word = '<S-Enter>',
       },
     },
   },
