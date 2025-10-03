@@ -700,6 +700,7 @@ require('lazy').setup({
         --- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         astro = {},
         clangd = {},
+        copilot = {},
         gopls = {},
         pyright = {},
         rust_analyzer = {},
@@ -723,7 +724,7 @@ require('lazy').setup({
       ---@type MasonLspconfigSettings
       ---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
-        automatic_enable = vim.tbl_keys(servers or {}),       
+        automatic_enable = vim.tbl_keys(servers or {}),
       }
 
       -- Ensure the servers and tools above are installed
@@ -748,12 +749,12 @@ require('lazy').setup({
       -- Installed LSPs are configured and enabled automatically with mason-lspconfig
       -- The loop below is for overriding the default configuration of LSPs with the ones in the servers table
       for server_name, config in pairs(servers) do
-        vim.lsp.config(server_name, config) 
+        vim.lsp.config(server_name, config)
       end
 
       -- NOTE: Some servers may require an old setup until they are updated. For the full list refer here: https://github.com/neovim/nvim-lspconfig/issues/3705
       -- These servers will have to be manually set up with require("lspconfig").server_name.setup{}
-   end,
+    end,
   },
 
   { -- Autoformat
@@ -1008,10 +1009,71 @@ require('lazy').setup({
   },
   { -- AI Autocomplete
     'supermaven-inc/supermaven-nvim',
+    enabled = false,
     opts = {
       keymaps = {
         accept_suggestion = '<Tab>',
         accept_word = '<C-Tab>',
+      },
+    },
+  },
+  {
+    'zbirenbaum/copilot.lua',
+    enabled = true,
+  },
+  {
+    'folke/sidekick.nvim',
+    enabled = true,
+    opts = {
+      cli = {
+        mux = {
+          backend = 'tmux',
+          enabled = false,
+        },
+      },
+    },
+    keys = {
+      {
+        '<tab>',
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require('sidekick').nes_jump_or_apply() then
+            return '<Tab>' -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = 'Goto/Apply Next Edit Suggestion',
+      },
+      {
+        '<leader>aa',
+        function()
+          require('sidekick.cli').toggle()
+        end,
+        desc = 'Sidekick Toggle CLI',
+      },
+      {
+        '<leader>at',
+        function()
+          require('sidekick.cli').send { msg = '{this}' }
+        end,
+        mode = { 'x', 'n' },
+        desc = 'Send This',
+      },
+      {
+        '<leader>av',
+        function()
+          require('sidekick.cli').send { msg = '{selection}' }
+        end,
+        mode = { 'x' },
+        desc = 'Send Visual Selection',
+      },
+      {
+        '<c-.>',
+        function()
+          require('sidekick.cli').focus()
+        end,
+        mode = { 'n', 'x', 'i', 't' },
+        desc = 'Sidekick Switch Focus',
       },
     },
   },
