@@ -1009,7 +1009,7 @@ require('lazy').setup({
   },
   { -- AI Autocomplete
     'supermaven-inc/supermaven-nvim',
-    enabled = false,
+    enabled = true,
     opts = {
       keymaps = {
         accept_suggestion = '<Tab>',
@@ -1019,7 +1019,10 @@ require('lazy').setup({
   },
   {
     'zbirenbaum/copilot.lua',
-    enabled = true,
+    enabled = false,
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp",
+    },
   },
   {
     'folke/sidekick.nvim',
@@ -1076,6 +1079,9 @@ require('lazy').setup({
         desc = 'Sidekick Switch Focus',
       },
     },
+  },
+  {
+    'mpiannucci/copy-context'
   },
   {
     'akinsho/toggleterm.nvim',
